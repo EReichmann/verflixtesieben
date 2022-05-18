@@ -24,9 +24,16 @@ function wuerfeln() {
 
        if (summeWuerfel === 7) {
            punktespieler1 = punktespieler1 - summeWuerfel
+           spielerwechsel()
+           alert("Durch die 7 ist Spieler 2 an der Reihe.")
        } else {
            punktespieler1 = punktespieler1 + summeWuerfel
        }
+
+       document.getElementById("ausgabePunkteSpieler1").innerHTML = "Punktzahl Spieler 1 = " + punktespieler1
+
+       console.log(spielerAmZug)
+
    }if (spielerAmZug === 2){
 
         wuerfel1 = 0
@@ -44,9 +51,11 @@ function wuerfeln() {
 
         if (summeWuerfel === 7) {
             punkteSpieler2 = punkteSpieler2 - summeWuerfel
+            alert("Das Spiel wurde durch eine 7 beendet. Kommen wir nun zur Auswertung!")
         } else {
             punkteSpieler2 = punkteSpieler2 + summeWuerfel
         }
+        document.getElementById("ausgabePunkteSpiler2"). innerHTML = "Punktzahl Spieler 2= " + punkteSpieler2
     }
 
    if (anzahlwuerfe1 === anzahlwuerfe2){
@@ -55,6 +64,18 @@ function wuerfeln() {
 
 
 
+}
+
+function spielerwechsel() {
+    spielerAmZug = spielerAmZug + 1
+
+    if (spielerAmZug === 2){
+        alert("Nun würfelt Spieler 2!")
+    }
+
+    if (spielerAmZug >= 3){
+        alert("Das Spiel ist beendet. Kommen wir nun zur Auswertung!")
+    }
 }
 
 function Augenzahl() {
