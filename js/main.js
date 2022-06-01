@@ -34,7 +34,7 @@ function wuerfeln() {
 
        console.log(spielerAmZug)
 
-   }if (spielerAmZug === 2){
+   }else {
 
         wuerfel1 = 0
         wuerfel2 = 0
@@ -52,6 +52,9 @@ function wuerfeln() {
         if (summeWuerfel === 7) {
             punkteSpieler2 = punkteSpieler2 - summeWuerfel
             alert("Das Spiel wurde durch eine 7 beendet. Kommen wir nun zur Auswertung!")
+            document.getElementById("wuerfel").disabled = true
+            document.getElementById("spieler").disabled = true
+            auswertung()
         } else {
             punkteSpieler2 = punkteSpieler2 + summeWuerfel
         }
@@ -60,6 +63,8 @@ function wuerfeln() {
 
    if (anzahlwuerfe1 === anzahlwuerfe2){
        document.getElementById("wuerfel").disabled = true
+       document.getElementById("spieler").disabled = true
+       auswertung()
    }
 
 
@@ -73,11 +78,27 @@ function spielerwechsel() {
         alert("Nun würfelt Spieler 2!")
     }
 
-    if (spielerAmZug >= 3){
+    if (spielerAmZug === 3){
         alert("Das Spiel ist beendet. Kommen wir nun zur Auswertung!")
+        document.getElementById("spieler").disabled = true
+        auswertung()
     }
-}
+
+    }
+   
+function reset() {
+    window.location.reload()
+}    
 
 function Augenzahl() {
    return Math.round((Math.random() * 5) +1)
 }
+
+function auswertung() {
+    if (punktespieler1 > punkteSpieler2){
+        document.getElementById("auswertung").innerHTML = "Spieler 1 hat mit dem Punktestand " + punktespieler1 + " zu " + punkteSpieler2 + " gewonnen"}
+    else{
+        document.getElementById("auswertung").innerHTML = "Spieler 2 hat mit dem Punktestand " + punkteSpieler2 + " zu " + punktespieler1 + " gewonnen"
+    }
+}
+
